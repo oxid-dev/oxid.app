@@ -1,0 +1,12 @@
+const SettingsPage = () => {
+  return (
+    <div className="h-full flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold mb-2">Settings Page</h1>
+        <p className="text-gray-400">Settings will be implemented here</p>
+      </div>
+    </div>
+  );
+};
+
+export default SettingsPage;
