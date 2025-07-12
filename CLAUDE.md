@@ -96,6 +96,7 @@ src-tauri/
 - **Mock AI Integration**: Simulated AI responses for testing
 - **Responsive Design**: Dark theme, auto-scrolling, typing indicators
 - **Development Tooling**: ESLint, Prettier, TypeScript strict mode
+- **Path Aliases**: Configured for clean imports (see Import Conventions below)
 
 ### Future Architecture Plans
 - **AI Provider Abstraction**: Interface to swap between Claude Code SDK and custom implementations
@@ -148,6 +149,44 @@ src-tauri/
 5. **Lint**: `npm run lint` - Code quality check
 
 The chat interface is fully functional with mock AI responses. Try typing "hello", "help", or "test" to see different mock responses.
+
+## Import Conventions
+
+### Path Aliases
+The project uses path aliases for clean imports. Always use aliases instead of relative imports when importing across different folders:
+
+**Configured Aliases:**
+- `@/*` → `./src/*` (root src)
+- `@/ui/*` → `./src/ui/*` (UI components)
+- `@/features/*` → `./src/features/*` (feature modules)
+- `@/pages/*` → `./src/pages/*` (pages)
+- `@/lib/*` → `./src/lib/*` (utilities)
+- `@/types/*` → `./src/types/*` (type definitions)
+- `@/stores/*` → `./src/stores/*` (state stores)
+- `@/router/*` → `./src/router/*` (routing)
+
+**Usage Rules:**
+```typescript
+// ✅ Good: Use aliases for cross-folder imports
+import { Button } from '@/ui/atoms';
+import { useAgentChat } from '@/features/agent-chat';
+import { router } from '@/router';
+
+// ✅ Good: Use relative imports within the same component folder (atomic design)
+import { ButtonProps } from './Button.types';  // Within same atom/molecule/organism
+
+// ❌ Bad: Relative imports across folders
+import { Button } from '../../ui/atoms/Button';
+import { useAgentChat } from '../../../features/agent-chat/hooks/useAgentChat';
+```
+
+**Atomic Design Exception:**
+Within the same atomic component (atom/molecule/organism), use relative imports for internal files:
+- `./Component.types.ts`
+- `./Component.styles.ts` 
+- `./index.ts`
+
+This keeps component internals self-contained while using aliases for external dependencies.
 
 ## Git Information
 

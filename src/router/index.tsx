@@ -1,6 +1,6 @@
 import { createHashRouter, Navigate } from 'react-router-dom';
 import { Suspense } from 'react';
-import { routes } from './routes';
+import { routes } from '@/router/routes';
 import { AppLayout } from '@/ui/layouts/AppLayout';
 
 // Wrap each route element with Suspense

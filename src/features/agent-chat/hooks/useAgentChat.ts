@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useAgentChatStore } from '../store/agentChatStore';
+import { useAgentChatStore } from '@/features/agent-chat/store/agentChatStore';
 
 export const useAgentChat = () => {
   const {

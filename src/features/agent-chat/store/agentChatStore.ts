@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { ChatState, ChatActions, Message } from '../types';
+import { ChatState, ChatActions, Message } from '@/features/agent-chat/types';
 
 type AgentChatStore = ChatState & ChatActions;
 

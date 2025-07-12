@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useAgentChat } from '../../hooks/useAgentChat';
+import { useAgentChat } from '@/features/agent-chat/hooks/useAgentChat';
 import { MessageBubble } from '@/ui/molecules';
 import { Button, TextArea } from '@/ui/atoms';
 import { Send } from 'lucide-react';
