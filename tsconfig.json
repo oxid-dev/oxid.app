@@ -25,6 +25,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/ui/*": ["./src/ui/*"],
+      "@/primitives/*": ["./src/ui/primitives/*"],
       "@/features/*": ["./src/features/*"],
       "@/pages/*": ["./src/pages/*"],
       "@/lib/*": ["./src/lib/*"],

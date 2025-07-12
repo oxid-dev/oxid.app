@@ -23,8 +23,8 @@ const MessageBubble = ({ role, content, timestamp, className }: MessageBubblePro
       <div className={cn(
         'max-w-[80%] rounded-lg px-4 py-2 text-sm',
         isUser 
-          ? 'bg-blue-600 text-white' 
-          : 'bg-gray-800 text-gray-100 border border-gray-700'
+          ? 'bg-primary text-primary-foreground' 
+          : 'bg-muted text-muted-foreground border border-border'
       )}>
         <div className="whitespace-pre-wrap break-words">
           {content}
@@ -32,7 +32,7 @@ const MessageBubble = ({ role, content, timestamp, className }: MessageBubblePro
         {timestamp && (
           <div className={cn(
             'mt-1 text-xs opacity-70',
-            isUser ? 'text-blue-100' : 'text-gray-400'
+            isUser ? 'text-primary-foreground/70' : 'text-muted-foreground/70'
           )}>
             {formatTimestamp(timestamp)}
           </div>

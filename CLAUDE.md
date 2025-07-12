@@ -13,16 +13,17 @@ Oxid is an open-source desktop application that serves as a free alternative to 
 - **MVP Strategy**: Using Claude Code SDK initially, with plans to build custom agent system later
 
 ### Technology Stack
-- **Frontend**: React 18 + TypeScript + Vite + Tailwind CSS
+- **Frontend**: React 18 + TypeScript + Vite + Tailwind CSS v4
 - **Desktop Framework**: Tauri v2 (Rust backend runs locally)
-- **State Management**: Zustand (to be implemented)
+- **State Management**: Zustand (implemented)
 - **Code Editor**: Monaco Editor (to be implemented)
-- **UI Components**: Radix UI (to be implemented)
+- **UI Components**: ShadCN UI + Radix UI (implemented)
 
 ### Development Philosophy
 - Minimize Rust code - use JavaScript/TypeScript wherever possible
 - Only write Rust when Tauri's prebuilt plugins don't support something or for significant performance gains
 - Keep the architecture modular to allow easy swapping from Claude Code SDK to custom agents
+- **Always use Zustand for global state** - Never create Context APIs for state management
 
 ## Commands
 
@@ -50,10 +51,15 @@ src/
 ├── App.css                    # Tailwind imports
 ├── main.tsx                   # React entry point
 ├── ui/                        # UI components (atomic design)
-│   ├── atoms/                 # Basic building blocks
-│   │   ├── Button/            # Button with variants, loading states
-│   │   ├── Input/             # Input with error handling
-│   │   └── TextArea/          # Auto-resizing textarea
+│   ├── primitives/            # ShadCN components (foundation)
+│   │   ├── button.tsx         # ShadCN Button primitive
+│   │   ├── input.tsx          # ShadCN Input primitive
+│   │   ├── textarea.tsx       # ShadCN TextArea primitive
+│   │   └── dialog.tsx         # ShadCN Dialog primitive
+│   ├── atoms/                 # Generic component wrappers
+│   │   ├── Button/            # Button wrapper with loading states
+│   │   ├── Input/             # Input wrapper with error handling
+│   │   └── TextArea/          # TextArea wrapper with auto-resize
 │   ├── molecules/             # Component combinations
 │   │   └── MessageBubble/     # Chat message display
 │   └── layouts/
@@ -90,7 +96,8 @@ src-tauri/
 
 ### Implemented Features
 - **Complete Chat UI**: Working chat interface with mock AI responses
-- **Atomic Design System**: Reusable UI components with proper TypeScript types
+- **ShadCN UI + Atomic Design**: Professional accessibility foundation with custom design system
+- **Design Token System**: CSS variables and theme support for consistent styling
 - **State Management**: Zustand store for chat state
 - **Routing**: React Router with hash routing for desktop apps
 - **Mock AI Integration**: Simulated AI responses for testing
@@ -158,6 +165,7 @@ The project uses path aliases for clean imports. Always use aliases instead of r
 **Configured Aliases:**
 - `@/*` → `./src/*` (root src)
 - `@/ui/*` → `./src/ui/*` (UI components)
+- `@/primitives/*` → `./src/ui/primitives/*` (ShadCN primitives)
 - `@/features/*` → `./src/features/*` (feature modules)
 - `@/pages/*` → `./src/pages/*` (pages)
 - `@/lib/*` → `./src/lib/*` (utilities)
@@ -187,6 +195,87 @@ Within the same atomic component (atom/molecule/organism), use relative imports 
 - `./index.ts`
 
 This keeps component internals self-contained while using aliases for external dependencies.
+
+## Component Architecture: ShadCN + Atomic Design
+
+### **Architecture Overview**
+The project uses a hybrid approach combining ShadCN UI primitives with atomic design principles:
+
+```
+Primitives (ShadCN) → Atoms (Wrappers) → Molecules → Organisms → Features
+```
+
+### **Layer Responsibilities**
+
+**1. Primitives Layer (`src/ui/primitives/`)**
+- Raw ShadCN components with accessibility and theming built-in
+- Foundation layer providing consistent behavior and design tokens
+- Examples: `button.tsx`, `input.tsx`, `textarea.tsx`, `dialog.tsx`
+
+**2. Atoms Layer (`src/ui/atoms/`)**
+- Generic wrapper components around ShadCN primitives
+- Add custom functionality (loading states, error handling, auto-resize)
+- Maintain consistent API across the application
+- Examples: `Button/` (adds loading), `Input/` (adds error), `TextArea/` (adds auto-resize)
+
+**3. Molecules/Organisms (`src/ui/molecules/`, `src/ui/organisms/`)**
+- Combinations of atoms for generic UI patterns
+- Stateless and reusable across features
+- Examples: `MessageBubble/`, `SearchField/`, `FormField/`
+
+**4. Features Layer (`src/features/`)**
+- Business logic and feature-specific components
+- Use atoms/molecules + add domain-specific behavior
+- Examples: `AgentChatContainer`, `SendMessageButton`
+
+### **Usage Guidelines**
+
+**✅ Use ShadCN Primitives directly when:**
+- Building new atomic wrappers
+- Need access to raw ShadCN functionality
+
+**✅ Use Atoms when:**
+- Building molecules, organisms, or feature components
+- Need the enhanced functionality (loading, errors, etc.)
+
+**✅ Use Feature Components when:**
+- Implementing business logic
+- Building domain-specific UI patterns
+
+## Modern UI Stack
+- **Tailwind CSS v4** with OKLCH colors and CSS-based configuration
+- **Latest ShadCN components** with `data-slot` attributes and modern focus rings
+
+**Example Implementation:**
+```typescript
+// Primitive (ShadCN foundation)
+import { Button as ShadCNButton } from '@/ui/primitives/button'
+
+// Atom (generic wrapper)
+import { Button } from '@/ui/atoms/Button'  // Adds loading states
+
+// Feature component (business logic)
+import { SendButton } from '@/features/agent-chat/components/SendButton'  // Adds chat logic
+```
+
+This architecture provides professional accessibility (ShadCN) + design system consistency (atoms) + business logic separation (features).
+
+### **Development Guidelines**
+
+**🎨 Design Token Usage:**
+- ✅ **Always use design tokens**: `bg-background`, `text-foreground`, `border-border`
+- ❌ **Never use hardcoded colors**: `bg-gray-900`, `text-white`, `border-gray-800`
+- ✅ **Use semantic tokens**: `text-muted-foreground`, `bg-destructive`, `text-primary`
+
+**🌙 Theme System:**
+- Dark theme is applied by default via `dark` class on root AppLayout
+- All components automatically inherit theme via CSS variables
+- CSS variables defined in `src/App.css` with `:root` and `.dark` variants
+
+**⚠️ ESLint & ShadCN:**
+- ShadCN components may trigger `react-refresh/only-export-components` warnings
+- Add `// eslint-disable-next-line react-refresh/only-export-components` above exports
+- This is normal for components that export both component + utility functions
 
 ## Git Information
 

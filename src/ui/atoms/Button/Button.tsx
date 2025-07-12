@@ -1,51 +1,54 @@
-import { forwardRef } from 'react';
-import { cn } from '@/lib/utils';
+import { Button as ShadCNButton } from '@/ui/primitives/button';
 import { ButtonProps } from './Button.types';
+import { Loader2 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = 'primary', size = 'md', className, children, isLoading, disabled, ...props }, ref) => {
-    const baseStyles = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
-    
-    const variants = {
-      primary: 'bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500',
-      secondary: 'bg-gray-600 text-white hover:bg-gray-700 focus-visible:ring-gray-500',
-      ghost: 'text-gray-300 hover:bg-gray-800 hover:text-white focus-visible:ring-gray-500',
-      outline: 'border border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white focus-visible:ring-gray-500',
-    };
-    
-    const sizes = {
-      sm: 'h-8 px-3 text-sm',
-      md: 'h-10 px-4 text-sm',
-      lg: 'h-12 px-6 text-base',
-    };
+const Button = ({ variant = 'primary', size = 'md', className, children, isLoading, disabled, ...props }: ButtonProps) => {
+  // Map our variant names to ShadCN variant names
+  const shadCNVariant = {
+    primary: 'default',
+    secondary: 'secondary', 
+    ghost: 'ghost',
+    outline: 'outline',
+  }[variant] as 'default' | 'secondary' | 'ghost' | 'outline';
 
-    return (
-      <button
-        ref={ref}
-        className={cn(
-          baseStyles,
-          variants[variant],
-          sizes[size],
-          className
-        )}
-        disabled={disabled || isLoading}
-        {...props}
-      >
-        {isLoading ? (
-          <>
-            <svg className="mr-2 h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-            </svg>
-            Loading...
-          </>
-        ) : (
-          children
-        )}
-      </button>
-    );
-  }
-);
+  // Map our size names to ShadCN size names
+  const shadCNSize = {
+    sm: 'sm',
+    md: 'default',
+    lg: 'lg',
+  }[size] as 'sm' | 'default' | 'lg';
+
+  // Determine if button should be disabled
+  const isDisabled = disabled || isLoading;
+
+  // Build custom classes for cursor and disabled state
+  const customClasses = cn(
+    'cursor-pointer',
+    // Override ShadCN's disabled:pointer-events-none with our cursor
+    isDisabled && 'disabled:pointer-events-auto disabled:cursor-not-allowed',
+    className
+  );
+
+  return (
+    <ShadCNButton
+      variant={shadCNVariant}
+      size={shadCNSize}
+      className={customClasses}
+      disabled={isDisabled}
+      {...props}
+    >
+      {isLoading ? (
+        <>
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          Loading...
+        </>
+      ) : (
+        children
+      )}
+    </ShadCNButton>
+  );
+};
 
 Button.displayName = 'Button';
 
