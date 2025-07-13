@@ -1,0 +1,77 @@
+/* 
+ * Centralized Theme Configuration
+ * Modify these variables to change the entire app's appearance
+ */
+
+:root {
+  /* ===== Typography ===== */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', 'SF Mono', Consolas, monospace;
+  
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  
+  /* ===== Spacing ===== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  
+  /* ===== Border Radius ===== */
+  --radius: 0.625rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-full: 9999px;
+  
+  /* ===== Core Colors ===== */
+  /* Background & Surface */
+  --background: oklch(0.145 0 0);        /* Main app background */
+  --foreground: oklch(0.985 0 0);        /* Main text color */
+  --card: oklch(0.205 0 0);              /* Card/panel background */
+  --card-foreground: oklch(0.985 0 0);   /* Card text color */
+  
+  /* Brand Colors */
+  --primary: oklch(0.488 0.243 264.376);         /* Primary brand color (blue) */
+  --primary-foreground: oklch(0.985 0 0);        /* Text on primary */
+  --secondary: oklch(0.269 0 0);                 /* Secondary color */
+  --secondary-foreground: oklch(0.985 0 0);      /* Text on secondary */
+  
+  /* UI States */
+  --muted: oklch(0.269 0 0);                     /* Muted backgrounds */
+  --muted-foreground: oklch(0.708 0 0);          /* Muted text */
+  --accent: oklch(0.488 0.243 264.376);          /* Accent color (matches primary) */
+  --accent-foreground: oklch(0.985 0 0);         /* Text on accent */
+  
+  /* Feedback Colors */
+  --destructive: oklch(0.704 0.191 22.216);      /* Error/danger color */
+  --destructive-foreground: oklch(0.985 0 0);    /* Text on destructive */
+  --success: oklch(0.769 0.188 70.08);           /* Success color */
+  --warning: oklch(0.828 0.189 84.429);          /* Warning color */
+  
+  /* Borders & Inputs */
+  --border: oklch(1 0 0 / 10%);          /* Default border color */
+  --input: oklch(1 0 0 / 15%);           /* Input background */
+  --ring: oklch(0.556 0 0);              /* Focus ring color */
+  
+  /* ===== Shadows ===== */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  
+  /* ===== Transitions ===== */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
