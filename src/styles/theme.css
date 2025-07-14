@@ -58,10 +58,10 @@
   --foreground-subtle: oklch(63.6% 0.002 286.029);      /* Subtle foreground */
   
   /* UI States */
-  --muted: oklch(0.269 0 0);                     /* Muted backgrounds */
-  --muted-foreground: oklch(0.708 0 0);          /* Muted text */
-  --accent: oklch(0.488 0.243 264.376);          /* Accent color (matches primary) */
-  --accent-foreground: oklch(0.985 0 0);         /* Text on accent */
+  --muted: oklch(25% 0.005 286);                 /* Muted backgrounds - darker for dark theme */
+  --muted-foreground: oklch(65% 0.002 286);      /* Muted text - lighter for dark theme */
+  --accent: oklch(25% 0.005 286);                /* Accent color - subtle dark hover */
+  --accent-foreground: oklch(90% 0.002 286);     /* Text on accent - light for dark theme */
   
   /* Feedback Colors */
   --destructive: oklch(0.704 0.191 22.216);      /* Error/danger color */
@@ -71,8 +71,8 @@
   
   /* Borders & Inputs */
   --border: oklch(27.4% 0.006 286.033);          /* Default border color */
-  --input: oklch(1 0 0 / 15%);           /* Input background */
-  --ring: oklch(0.556 0 0);              /* Focus ring color */
+  --input: oklch(20% 0.005 286);                 /* Input background - darker for dark theme */
+  --ring: oklch(69.4% 0.195 41.425);            /* Focus ring color - matches primary */
   
   /* ===== Shadows ===== */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
