@@ -21,7 +21,7 @@ export const router = createHashRouter([
     children: [
       {
         index: true,
-        element: <Navigate to="/chat" replace />,
+        element: <Navigate to="/builder" replace />,
       },
       ...routes.map(route => ({
         path: route.path,

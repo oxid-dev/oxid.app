@@ -4,6 +4,7 @@ import { lazy } from 'react';
 const HomePage = lazy(() => import('@/pages/index'));
 const ChatPage = lazy(() => import('@/pages/chat'));
 const SettingsPage = lazy(() => import('@/pages/settings'));
+const AppBuilderPage = lazy(() => import('@/pages/builder'));
 
 export const routes = [
   {
@@ -13,6 +14,10 @@ export const routes = [
   {
     path: '/chat',
     element: ChatPage,
+  },
+  {
+    path: '/builder',
+    element: AppBuilderPage,
   },
   {
     path: '/settings',

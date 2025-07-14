@@ -32,6 +32,16 @@ html, body {
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  
+  /* Brand colors */
+  --color-brand-gradient-start: var(--brand-gradient-start);
+  --color-brand-gradient-end: var(--brand-gradient-end);
+  --color-brand-foreground-gradient-start: var(--brand-foreground-gradient-start);
+  --color-brand-foreground-gradient-end: var(--brand-foreground-gradient-end);
+  
+  /* Foreground variants */
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-foreground-subdued: var(--foreground-subdued);
 }
 
 @layer base {

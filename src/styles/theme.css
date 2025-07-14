@@ -36,16 +36,26 @@
   
   /* ===== Core Colors ===== */
   /* Background & Surface */
-  --background: oklch(0.145 0 0);        /* Main app background */
-  --foreground: oklch(0.985 0 0);        /* Main text color */
+  --background: oklch(14.1% 0.005 285.823);        /* Main app background */
+  --foreground: oklch(90.6% 0.002 286.029);
+  --foreground-subdued: oklch(96.7% 0.001 286.375);        /* Main text color */
   --card: oklch(0.205 0 0);              /* Card/panel background */
   --card-foreground: oklch(0.985 0 0);   /* Card text color */
   
   /* Brand Colors */
-  --primary: oklch(0.488 0.243 264.376);         /* Primary brand color (blue) */
+  --primary: oklch(69.4% 0.195 41.425);          /* Primary brand color (orange) */
   --primary-foreground: oklch(0.985 0 0);        /* Text on primary */
   --secondary: oklch(0.269 0 0);                 /* Secondary color */
   --secondary-foreground: oklch(0.985 0 0);      /* Text on secondary */
+  
+  /* Brand Gradients */
+  --brand-gradient-start: oklch(69.4% 0.195 41.425);    /* Gradient start (primary) */
+  --brand-gradient-end: oklch(54.6% 0.215 29.234);      /* Gradient end */
+  --brand-foreground-gradient-start: oklch(77.1% 0.156 50.87); /* Text gradient start */
+  --brand-foreground-gradient-end: oklch(62.8% 0.257 25.546);  /* Text gradient end */
+  
+  /* UI Foreground Variants */
+  --foreground-subtle: oklch(63.6% 0.002 286.029);      /* Subtle foreground */
   
   /* UI States */
   --muted: oklch(0.269 0 0);                     /* Muted backgrounds */
@@ -60,7 +70,7 @@
   --warning: oklch(0.828 0.189 84.429);          /* Warning color */
   
   /* Borders & Inputs */
-  --border: oklch(1 0 0 / 10%);          /* Default border color */
+  --border: oklch(27.4% 0.006 286.033);          /* Default border color */
   --input: oklch(1 0 0 / 15%);           /* Input background */
   --ring: oklch(0.556 0 0);              /* Focus ring color */
   
