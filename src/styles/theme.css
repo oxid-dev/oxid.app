@@ -37,8 +37,7 @@
   /* ===== Core Colors ===== */
   /* Background & Surface */
   --background: oklch(14.1% 0.005 285.823);        /* Main app background */
-  --foreground: oklch(90.6% 0.002 286.029);
-  --foreground-subdued: oklch(96.7% 0.001 286.375);        /* Main text color */
+  --foreground: oklch(90.6% 0.002 286.029); /* Main text color */
   --card: oklch(0.205 0 0);              /* Card/panel background */
   --card-foreground: oklch(0.985 0 0);   /* Card text color */
   
@@ -63,6 +62,10 @@
   --accent: oklch(25% 0.005 286);                /* Accent color - subtle dark hover */
   --accent-foreground: oklch(90% 0.002 286);     /* Text on accent - light for dark theme */
   
+  /* Popover Colors */
+  --popover: oklch(22% 0.005 286);               /* Popover/dropdown background */
+  --popover-foreground: oklch(90% 0.002 286);    /* Popover text color */
+  
   /* Feedback Colors */
   --destructive: oklch(0.704 0.191 22.216);      /* Error/danger color */
   --destructive-foreground: oklch(0.985 0 0);    /* Text on destructive */
@@ -71,7 +74,7 @@
   
   /* Borders & Inputs */
   --border: oklch(27.4% 0.006 286.033);          /* Default border color */
-  --input: oklch(20% 0.005 286);                 /* Input background - darker for dark theme */
+  --input: oklch(35% 0.005 286);                 /* Input background - lighter for visibility */
   --ring: oklch(69.4% 0.195 41.425);            /* Focus ring color - matches primary */
   
   /* ===== Shadows ===== */
