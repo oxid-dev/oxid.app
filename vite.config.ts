@@ -20,6 +20,8 @@ export default defineConfig(async () => ({
       "@/types": path.resolve(__dirname, "./src/types"),
       "@/stores": path.resolve(__dirname, "./src/stores"),
       "@/router": path.resolve(__dirname, "./src/router"),
+      "#backend": path.resolve(__dirname, "./backend"),
+      "#backend-client": path.resolve(__dirname, "./backend/index.ts"),
     },
   },
 

@@ -31,7 +31,9 @@
       "@/lib/*": ["./src/lib/*"],
       "@/types/*": ["./src/types/*"],
       "@/stores/*": ["./src/stores/*"],
-      "@/router/*": ["./src/router/*"]
+      "@/router/*": ["./src/router/*"],
+      "#backend/*": ["./backend/*"],
+      "#backend-client": ["./backend/index.ts"]
     }
   },
   "include": ["src"],
